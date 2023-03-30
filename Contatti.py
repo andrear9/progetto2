@@ -6,7 +6,6 @@ class Contatti:
         {"nome": "Simona", "cognome": "Bianchi", "email": "simona.bianchi@example.com", "telefono": "555555555"},
         {"nome": "Paolo", "cognome": "Neri", "email": "paolo.neri@example.com", "telefono": "333333333"}]
 
-
     def AggiungiContatti(self, nome, cognome, email, telefono):
         contatto = {
             "nome" : nome,
@@ -14,12 +13,28 @@ class Contatti:
             "email" : email,
             "telefono" : telefono
         }
-        contatti.append(contatto)
+        self.__contatti.append(contatto)
 
     def RimuoviContatto(self, nome, cognome):
         for ricerca in self.__contatti:
             if ricerca["nome"] == nome and ricerca["cognome"] == cognome:
                 self.__contatti.remove(ricerca)
 
-        
-
+    def ricerca(self):
+        nome_r=input("inserisci il nome dell'utente: ")
+        cognome_r=input("inserisci il cognome dell'utente: ")
+        for x in self.__contatti:
+            if x["nome"]==nome_r:
+                if x["cognome"]==cognome_r:
+                    stringa="""
+                    Nome: {}
+                    Cognome: {}
+                    email: {}
+                    numero di telefono: {}""".format(x["nome"], x["cognome"], x["email"], x["telefono"])
+                    print(stringa)
+                    return stringa
+        input("spiacente, ma non ci sono presone che corrispondono alla tua ricerca \n premere invio per continuare")
+        print(stringa)
+        return stringa
+    
+    
